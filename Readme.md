@@ -1,6 +1,6 @@
 # Formulario
 
-En esta práctica hemos creado un formulario y un login para poder incorporarlo a la práctica de PUFO.SA de la asignatura Desarrollo Web Servidor.
+En esta práctica hemos creado un formulario y un login para poder incorporarlo a la práctica de PUFO.SA de la asignatura Desarrollo Web Servidor. 
 
 ## Proceso de creación del formulario:
 
@@ -208,6 +208,8 @@ Las pruebas automatizadas se han dividido en dos carpetar localizadas en la ruta
    
 En github pages no muestra el error de input en rojo pero en local sí. Por lo que el usuario al meter los datos podría ver si son erroneos según completa el formulario.
 
+Por otra parte, tras pasar el JSHint se muestran 4 errores de "variables no utilizadas", pero las cuatro son funciones que llamamos desde el html. Además cuando se completa el formulario se redirije al login: desde local funciona correctamente, pero desde github pages no redirige y sale un error "Not Allowed". Para poder ver la pantalla de  Login solo es necesario ponerse en la barra de dirección y pulsar Enter.
+ 
 #### Autoras
 
 - \*\*Paz Rubio Rubio\*\* - [Github](https://github.com/PazRubio)
