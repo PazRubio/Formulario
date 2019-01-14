@@ -27,7 +27,7 @@ El formulario de alta debe contar con los siguientes campos:
 - Contraseña de acceso (Obligatorio). Para que sea válida debe tener al menos ocho caracteres y contener al menos una letra minúscula, una mayúscula, un número y un símbolo
 - Confirmación de contraseña (Obligatorio)
 
-- Para validar los diferentes campos obligatorios primero deben pasar los filtros de pattern y type que hemos establecido para cada input en el HTML5, también para que el usuario no deje ningún campo vacío hemos puesto a estos campos el atributo required. Además hemos añadido el atributo title=&quot;Obligatorio&quot; en los label para que al pasar el ratón por encima aparezca un mensaje de Obligatorio.
+- Para validar los diferentes campos obligatorios primero deben pasar los filtros de pattern y type que hemos establecido para cada input en el HTML5, también para que el usuario no deje ningún campo vacío hemos puesto a estos campos el atributo required. Además hemos añadido el atributo title="Obligatorio" en los label para que al pasar el ratón por encima aparezca un mensaje de Obligatorio.
 
 La validación con JS consiste en seleccionar el input del formulario que queramos validar a través de su id, lanzamos un evento, que al hacer keyup de una tecla del teclado, lance la función comprobando si se cumple la expresión regular o si está vacío el input del elemento, si el campo se completa de forma incorrecta se lanza un mensaje de error personalizado para  informar al usuario.
 
@@ -99,11 +99,9 @@ contrasenia2.addEventListener(&quot;keyup&quot;, function(){
 
 Se validan a través de HTML5 y con javascript.
 
-\&lt;label\&gt;Móvil:\&lt;/label\&gt;
-
-\&lt;input type=&quot;number&quot; id=&quot;movil&quot; pattern=&quot;/^[6|7][0-9]{8}$/&quot;\&gt;
-
-\&lt;div class=&quot;txtError&quot;\&gt;\&lt;/div\&gt;
+<label>Móvil:</label>
+<input type="number" id="movil" pattern="/^[6|7][0-9]{8}$/">
+<div class="txtError"></div>
 
 movil.addEventListener(&quot;keyup&quot;, function(){
 
@@ -129,11 +127,11 @@ Se han creado dos funciones que contienen los arrays de jefes y trabajos. Estas 
 
 \*\*2.Requisitos técnicos:\*\*
 
-- Para indicar de forma visible los campos que son obligatorios añadimos en sus correspodientes \&lt;label\&gt; un (\*), en los inputs el atributo required y  el atributo title=&quot;Obligatorio&quot; en los label para que al pasar el ratón por encima aparezca un mensaje de Obligatorio.
+- Para indicar de forma visible los campos que son obligatorios añadimos en sus correspodientes <label> un (\*), en los inputs el atributo required y  el atributo title="Obligatorio" en los label para que al pasar el ratón por encima aparezca un mensaje de Obligatorio.
 
-- Si los datos son correctos, el formulario redirigirá al login y mostrará un mensaje que indique que usuario se registró correctamente y creará una una cookie con el nombre del usuario y su contraseña.
+- Si los datos son correctos, el formulario redirigirá al login y mostrará un mensaje que indique que usuario se registró correctamente y creará una cookie con el nombre del usuario y su contraseña.
 
--Si no son correctos mostrará se colocará el foco en el input mal completado y saldrá un mensaje explicando los requisitos del formato del input.
+-Si no son correctos se colocará el foco en el input mal completado y saldrá un mensaje explicando los requisitos del formato del input.
 
 - Al hacer login se comprobará en las cookies si existe para ese usuario y la contraseña es correcta, en ese caso creará una cookie de sesión para ese usuario.
 
@@ -145,13 +143,13 @@ Se han creado dos funciones que contienen los arrays de jefes y trabajos. Estas 
 
 - Cookie de usuario que se crea cuando completa el formulario de registro:
 
-Para crear las cookies hemos hecho la función setCookie que recibe el nombre, la contraseña y un valor numérico que es el tiempo en el que se borrará la cookie. La función crea un par clave-valor con el nombre y la contraseña que el usuario ha introducido al rellenar el formulario de registro. Esta función la llamamos en el momento que se pulsa el botón de &quot;Registrar Empleado&quot; y se ha validado correctamente el formulario.
+Para crear las cookies hemos hecho la función setCookie que recibe el nombre, la contraseña y un valor numérico que es el tiempo en el que se borrará la cookie. La función crea un par clave-valor con el nombre y la contraseña que el usuario ha introducido al rellenar el formulario de registro. Esta función la llamamos en el momento que se pulsa el botón de "Registrar Empleado" y se ha validado correctamente el formulario.
 
 La función getCookie lo que hace es coger los datos del nombre y la contraseña y comprueba si esas credenciales coinciden con la cookie de algún usuario registrado.
 
 - Cookie de sesión que se crea cuando el usuario hace el login:
 
-Cuando el usuario rellena los campos del login se llama a una función que esta a su vez llama a getCookie y comprueba que el nombre y la contraseña cifrada estén en las cookies creadas al hacer el registro(cookie de usuario), si es así, se llama a la función setCookie que crea la cookie de sesión y se muestra un mensaje de bienvenida y el nombre de usuario. Si no es así se muestra un mensaje de que las credenciales no son correctas.
+Cuando el usuario rellena los campos del login se llama a una función que esta a su vez llama a getCookie y comprueba que el nombre y la contraseña estan en las cookies creadas al hacer el registro(cookie de usuario), si es así, se llama a la función setCookie que crea la cookie de sesión y se muestra un mensaje de bienvenida y el nombre de usuario. Si no es así se muestra un mensaje de que las credenciales no son correctas.
 
 También se nos pedía que cuando se hiciese login apareciese un botón de logout, esto lo hemos hecho creando un botón con un estilo display:none que lo oculta. Una vez que el login es correcto el estilo se cambia a display:block y aparece.
 
@@ -160,36 +158,55 @@ También se nos pedía que cuando se hiciese login apareciese un botón de logou
 En la práctica nos piden que cuando se haga logout se borre la cookie de sesión, lo hemos conseguido poniendole un onclick al botón logout que llama a la función logoutSesion(), que cambia la fecha de expiración a la fecha unix.
 
 function logoutSesion(cname){
-
-    document.cookie = &quot;sesion=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;&quot;;
-
+    document.cookie = "sesion=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 \*\*4.Pruebas automatizadas\*\*
 
-Hemos realizado 10 pruebas automatizadas para validar el formulario utilizando el plugin de Selenium para Chrome junto con el servidor ligero que utilizamos para la práctica de migas de pan.
+Hemos realizado 14 pruebas automatizadas para validar el formulario utilizando el plugin de Kantu para Chrome, subiendo el proyecto a GitHub pages.
 
-- Prueba 1: Se completa el formulario sin errores.
+Las pruebas automatizadas se han dividido en dos carpetar localizadas en la ruta Formulario\kantu\testsuites:
+- Formulario
 
-- Prueba 2: Se introduce mal el nombre.
+ Prueba 1: Campos obligatorios correctos.
+ 
+ Cookie creada al registrar un usuario.
+    ![CookieRegistro](img/CookieRegistro.JPG)
+ 
 
-- Prueba 3: Se introduce mal el apellido.
+ Prueba 2: Todos los campos correctos.
 
-- Prueba 4: Se introduce mal el email.
+ Prueba 3: Nombre incorrecto.
 
-- Prueba 5: Se introduce mal la contraseña.
+ Prueba 4: Apellido incorrecto.
 
-- Prueba 6: No se introduce nombre.
+ Prueba 5: Usuario (email) incorrecto.
 
-- Prueba 7: No se introduce apellido.
+ Prueba 6: Fecha contrato incorrecta.
 
-- Prueba 8: No se introduce email.
+ Prueba 7: Móvil incorrecto.
 
-- Prueba 9: No se introduce contraseña.
+ Prueba 8: Salario incorrecto (menor).
+ 
+ Prueba 9: Salario incorrecto (mayor).
+ 
+ Prueba 10: Contraseña incorrecta.
+ 
+ Prueba 11: Segunda Contraseña distinta de la primera.
+ 
+ Prueba 12: Todos los posibles errores.
 
-- Prueba 10: Solo se rellenan los campos obligatorios.
+- Login
 
-Las pruebas automatizadas se han tenido que realizar en proyectos separados, ya que al hacerlas juntas se producían fallos al ejecutar.
+ Prueba 13: LogInCorrecto.json
+ Captura de de la cookie de sesion al loguearte
+  ![CookieSesion](img/CookieSesion.JPG)
+
+ 
+ Prueba 14: LogInIncorrecto.json
+ 
+   
+En github pages no muestra el error de input en rojo pero en local sí. Por lo que el usuario al meter los datos podría ver si son erroneos según completa el formulario.
 
 #### Autoras
 
