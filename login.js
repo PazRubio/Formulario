@@ -31,7 +31,7 @@ function getCookie(cname) {
         ca = decodedCookie.split(';'),
         c,
         i;
-    for (i = 0; i < ca.length; i++) {
+    for (i = 0; i < ca.length; i + 1) {
         c = ca[i];
         while (c.charAt(0) === ' ') {
             c = c.substring(1);

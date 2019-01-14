@@ -44,16 +44,7 @@ var salario = document.getElementById("Salario");
 var contrasenia = document.getElementById("contrasenia");
 var contrasenia2 = document.getElementById("contrasenia2");
 
-/*nombre.addEventListener("keyup", function(){
-    var expReg = /[A-Za-z]{2,15}/g;
-    if(!expReg.test(nombre.value) || nombre.value == ""){
-        nombre.setCustomValidity("Introduzca un nombre que contenga entre 2 y 15 caracteres, NO númericos");
-    }
-    else{
-        nombre.setCustomValidity("");
-    }
-    
-});*/
+
 nombre.addEventListener("keyup", function(){
     var expReg = /^[A-Za-z]{2,15}$/g;
     if(!expReg.test(nombre.value) || nombre.value == ""){
@@ -121,7 +112,6 @@ contrasenia.addEventListener("keyup", function(){
 });
 
 contrasenia2.addEventListener("keyup", function(){
-    var expReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z\d\W]{8,15}$/g;
     if(contrasenia.value !== contrasenia2.value){
         contrasenia2.setCustomValidity("La contraseñas deben coincidir");
     }
@@ -173,16 +163,4 @@ function getCookie(cname, cvalue) {
     }
     return null;
 }
-
-
-
-//--------------------------------------------------
-/*function mensaje(cname, cvalue){
-    if(cname!="" && cvalue!=""){
-       document.getElementById("mensaje").innerHTML = "Usuario "+ cname +" registrado correctamente. Pruebe a Logearse.";
-    }
-    document.getElementById("formulario").reset();
-}*/
-
-
 
